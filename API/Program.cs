@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+
 using InfraStructure;
 using InfraStructure.Repositories;
 using InfraStructure.Repositories.Interfaces;
+
+using Application;
+using Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +20,14 @@ builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IProdutoPedidoRepository, ProdutoPedidoRepository>();
+
+//todo Classes utilizadas para a camada de serviço, onde ficam as regras de negócio (Controllers)
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IFornecedorService, FornecedorService>();
+builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
+builder.Services.AddScoped<IProdutoPedidoService, ProdutoPedidoService>();
 
 // Add services to the container.
 
