@@ -131,6 +131,9 @@ namespace InfraStructure.Migrations
                     b.Property<decimal>("PrecoAtual")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FornecedorId");

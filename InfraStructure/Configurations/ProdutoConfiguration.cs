@@ -24,6 +24,9 @@ public class ProdutoConfiguration : IEntityTypeConfiguration<Produto>
 			.HasColumnType("decimal(18,2)")
 			.IsRequired();
 
+		builder.Property(p => p.Quantidade)
+			.IsRequired();
+
 		builder.Property(p => p.FornecedorId)
 			.IsRequired();
 
