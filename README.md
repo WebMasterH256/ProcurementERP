@@ -26,11 +26,11 @@ O objetivo é demonstrar domínio de arquitetura em camadas, boas práticas de d
 
 ```
 ProcurementERP/
-├── ProcurementERP.API/             # Endpoints, controllers, Program.cs
-├── ProcurementERP.Domain/          # Entidades e enums
-├── ProcurementERP.Infrastructure/  # DbContext, migrations, repositórios
-│   └── Configurations/             # Mapeamento EF Core por entidade
-└── ProcurementERP.Application/     # Services e regras de negócio (em breve)
+├── API/                    # Endpoints, controllers, Program.cs
+├── Domain/                 # Entidades e enums
+├── Infrastructure/         # DbContext, migrations, repositórios
+│   └── Configurations/     # Mapeamento EF Core por entidade
+└── Application/            # Services e regras de negócio
 ```
 
 ### Roadmap
@@ -39,7 +39,7 @@ ProcurementERP/
 - [x] Mapeamento com Entity Framework Core
 - [x] Migration inicial — banco de dados criado
 - [x] Repositórios (camada de acesso a dados)
-- [ ] Services com transações ACID
+- [x] Services com transações ACID
 - [ ] Controllers e endpoints REST
 - [ ] Autenticação JWT com RBAC (controle de acesso por cargo)
 - [ ] Trilha de auditoria (audit log)
@@ -70,11 +70,11 @@ The goal is to demonstrate proficiency in layered architecture, backend developm
 
 ```
 ProcurementERP/
-├── ProcurementERP.API/             # Endpoints, controllers, Program.cs
-├── ProcurementERP.Domain/          # Entities and enums
-├── ProcurementERP.Infrastructure/  # DbContext, migrations, repositories
-│   └── Configurations/             # EF Core mapping per entity
-└── ProcurementERP.Application/     # Services and business logic (coming soon)
+├── API/                    # Endpoints, controllers, Program.cs
+├── Domain/                 # Entities and enums
+├── Infrastructure/         # DbContext, migrations, repositories
+│   └── Configurations/     # EF Core mapping per entity
+└── Application/            # Services and business logic (coming soon)
 ```
 
 ### Roadmap
@@ -83,7 +83,7 @@ ProcurementERP/
 - [x] Entity Framework Core mapping
 - [x] Initial migration — database created
 - [x] Repositories (data access layer)
-- [ ] Services with ACID transactions
+- [x] Services with ACID transactions
 - [ ] Controllers and REST endpoints
 - [ ] JWT authentication with RBAC
 - [ ] Audit logging
