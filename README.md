@@ -38,7 +38,7 @@ ProcurementERP/
 - [x] Modelagem das entidades de domínio
 - [x] Mapeamento com Entity Framework Core
 - [x] Migration inicial — banco de dados criado
-- [ ] Repositórios (camada de acesso a dados)
+- [x] Repositórios (camada de acesso a dados)
 - [ ] Services com transações ACID
 - [ ] Controllers e endpoints REST
 - [ ] Autenticação JWT com RBAC (controle de acesso por cargo)
@@ -82,7 +82,7 @@ ProcurementERP/
 - [x] Domain entity modeling
 - [x] Entity Framework Core mapping
 - [x] Initial migration — database created
-- [ ] Repositories (data access layer)
+- [x] Repositories (data access layer)
 - [ ] Services with ACID transactions
 - [ ] Controllers and REST endpoints
 - [ ] JWT authentication with RBAC
