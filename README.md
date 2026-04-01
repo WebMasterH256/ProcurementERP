@@ -40,7 +40,7 @@ ProcurementERP/
 - [x] Migration inicial — banco de dados criado
 - [x] Repositórios (camada de acesso a dados)
 - [x] Services com transações ACID
-- [ ] Controllers e endpoints REST
+- [x] Controllers e endpoints REST
 - [ ] Autenticação JWT com RBAC (controle de acesso por cargo)
 - [ ] Trilha de auditoria (audit log)
 - [ ] Relatórios com Dapper
@@ -84,7 +84,7 @@ ProcurementERP/
 - [x] Initial migration — database created
 - [x] Repositories (data access layer)
 - [x] Services with ACID transactions
-- [ ] Controllers and REST endpoints
+- [x] Controllers and REST endpoints
 - [ ] JWT authentication with RBAC
 - [ ] Audit logging
 - [ ] Dapper reporting queries
