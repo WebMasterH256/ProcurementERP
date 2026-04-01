@@ -1,4 +1,6 @@
-﻿namespace API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace API.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Application.Interfaces;
@@ -12,6 +14,7 @@ public class ProdutoController : ControllerBase
 
 	public ProdutoController(IProdutoService ps) {  _ps = ps; }
 
+	[Authorize]
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
@@ -20,6 +23,7 @@ public class ProdutoController : ControllerBase
 		return Ok(produto);
 	}
 
+	[Authorize]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -28,6 +32,7 @@ public class ProdutoController : ControllerBase
 		return Ok(produtos);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPost]
 	public async Task<IActionResult> Post([FromBody] Produto produto)
 	{
@@ -36,6 +41,7 @@ public class ProdutoController : ControllerBase
 			new { id = produto.Id }, produto);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPut("{id}")]
 	public async Task<IActionResult> Put(int id, [FromBody] Produto produto)
 	{
@@ -45,6 +51,7 @@ public class ProdutoController : ControllerBase
 		return NoContent();
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(int id)
 	{

@@ -1,4 +1,6 @@
-﻿namespace API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace API.Controllers;
 
 using Application.Interfaces;
 using Domain;
@@ -12,6 +14,7 @@ public class FornecedorController : ControllerBase
 
 	public FornecedorController(IFornecedorService fs) { _fs = fs; }
 
+	[Authorize]
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
@@ -20,6 +23,7 @@ public class FornecedorController : ControllerBase
 		return Ok(fornecedor);
 	}
 
+	[Authorize]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -28,6 +32,7 @@ public class FornecedorController : ControllerBase
 		return Ok(fornecedores);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPost]
 	public async Task<IActionResult> Post([FromBody] Fornecedor fornecedor)
 	{
@@ -36,6 +41,7 @@ public class FornecedorController : ControllerBase
 			new { id = fornecedor.Id }, fornecedor);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPut("{id}")]
 	public async Task<IActionResult> Put(int id, [FromBody] Fornecedor fornecedor)
 	{
@@ -45,6 +51,7 @@ public class FornecedorController : ControllerBase
 		return NoContent();
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(int id)
 	{

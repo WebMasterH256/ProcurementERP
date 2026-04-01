@@ -1,4 +1,6 @@
-﻿namespace API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace API.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Domain;
@@ -12,6 +14,7 @@ public class UsuarioController : ControllerBase
 
 	public UsuarioController(IUsuarioService us) { _us = us; }
 
+	[Authorize]
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
@@ -20,6 +23,7 @@ public class UsuarioController : ControllerBase
 		return Ok(usuario);
 	}
 
+	[Authorize]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -28,6 +32,7 @@ public class UsuarioController : ControllerBase
 		return Ok(usuarios);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPost]
 	public async Task<IActionResult> Post([FromBody] Usuario usuario)
 	{
@@ -36,6 +41,7 @@ public class UsuarioController : ControllerBase
 			new { id = usuario.Id }, usuario);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPut("{id}")]
 	public async Task<IActionResult> Put(int id, [FromBody] Usuario usuario)
 	{
@@ -45,6 +51,7 @@ public class UsuarioController : ControllerBase
 		return NoContent();
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(int id)
 	{

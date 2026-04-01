@@ -1,4 +1,6 @@
-﻿namespace API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace API.Controllers;
 
 using Application.Interfaces;
 using Domain;
@@ -12,6 +14,7 @@ public class PedidoController : ControllerBase
 
 	public PedidoController(IPedidoService pps) { _ps = pps; }
 
+	[Authorize]
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
@@ -20,6 +23,7 @@ public class PedidoController : ControllerBase
 		return Ok(pedido);
 	}
 
+	[Authorize]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -28,6 +32,7 @@ public class PedidoController : ControllerBase
 		return Ok(Pedidos);
 	}
 
+	[Authorize]
 	[HttpPost]
 	public async Task<IActionResult> Post([FromBody] Pedido pedido)
 	{
@@ -36,6 +41,7 @@ public class PedidoController : ControllerBase
 			new { id = pedido.Id }, pedido);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPut("{id}")]
 	public async Task<IActionResult> Put(int id, [FromBody] Pedido pedido)
 	{
@@ -45,6 +51,7 @@ public class PedidoController : ControllerBase
 		return NoContent();
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(int id)
 	{

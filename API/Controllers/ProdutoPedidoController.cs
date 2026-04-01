@@ -1,4 +1,6 @@
-﻿namespace API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace API.Controllers;
 
 using Application.Interfaces;
 using Domain;
@@ -6,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("produto-pedido")]
+[Authorize]
 public class ProdutoPedidoController : ControllerBase
 {
 	private readonly IProdutoPedidoService _pps;
@@ -20,6 +23,7 @@ public class ProdutoPedidoController : ControllerBase
 		return Ok(pedido);
 	}
 
+	[Authorize]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{

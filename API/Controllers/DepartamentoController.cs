@@ -1,4 +1,6 @@
-﻿namespace API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace API.Controllers;
 
 using Application.Interfaces;
 using Domain;
@@ -12,6 +14,7 @@ public class DepartamentoController : ControllerBase
 
 	public DepartamentoController(IDepartamentoService ds) { _ds = ds; }
 
+	[Authorize]
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
@@ -20,6 +23,7 @@ public class DepartamentoController : ControllerBase
 		return Ok(departamento);
 	}
 
+	[Authorize]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -28,6 +32,7 @@ public class DepartamentoController : ControllerBase
 		return Ok(departamentos);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPost]
 	public async Task<IActionResult> Post([FromBody] Departamento departamento)
 	{
@@ -36,6 +41,7 @@ public class DepartamentoController : ControllerBase
 			new { id = departamento.Id }, departamento);
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpPut("{id}")]
 	public async Task<IActionResult> Put(int id, [FromBody] Departamento departamento)
 	{
@@ -45,6 +51,7 @@ public class DepartamentoController : ControllerBase
 		return NoContent();
 	}
 
+	[Authorize(Roles = "Gerente")]
 	[HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(int id)
 	{
