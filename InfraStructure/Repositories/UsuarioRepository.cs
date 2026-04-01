@@ -30,4 +30,7 @@ public class UsuarioRepository : IUsuarioRepository
 
 	public async Task SaveChangesAsync()
 		=> await _context.SaveChangesAsync();
+
+	public async Task<Usuario?> GetByEmailAsync(string email)
+		=> await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
 }

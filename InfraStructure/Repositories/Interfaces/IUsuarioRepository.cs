@@ -10,4 +10,5 @@ public interface IUsuarioRepository
 	void Update(Usuario usuario);
 	void Delete(Usuario usuario);
 	Task SaveChangesAsync();
+	Task<Usuario?> GetByEmailAsync(string email);
 }

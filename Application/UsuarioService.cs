@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces;
 using Domain;
 using InfraStructure.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application;
 
@@ -41,4 +38,7 @@ public class UsuarioService : IUsuarioService
 		_repository.Delete(usuario);
 		await _repository.SaveChangesAsync();
 	}
+
+	public async Task<Usuario?> GetByEmailAsync(string email)
+		=> await _repository.GetByEmailAsync(email);
 }
