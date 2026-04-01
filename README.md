@@ -41,7 +41,7 @@ ProcurementERP/
 - [x] Repositórios (camada de acesso a dados)
 - [x] Services com transações ACID
 - [x] Controllers e endpoints REST
-- [ ] Autenticação JWT com RBAC (controle de acesso por cargo)
+- [x] Autenticação JWT com RBAC (controle de acesso por cargo)
 - [ ] Trilha de auditoria (audit log)
 - [ ] Relatórios com Dapper
 - [ ] Documentação completa
