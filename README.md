@@ -85,7 +85,7 @@ ProcurementERP/
 - [x] Repositories (data access layer)
 - [x] Services with ACID transactions
 - [x] Controllers and REST endpoints
-- [ ] JWT authentication with RBAC
+- [x] JWT authentication with RBAC
 - [ ] Audit logging
 - [ ] Dapper reporting queries
 - [ ] Full documentation
