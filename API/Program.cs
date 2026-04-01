@@ -1,11 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-
+using Application;
+using Application.Interfaces;
 using InfraStructure;
 using InfraStructure.Repositories;
 using InfraStructure.Repositories.Interfaces;
-
-using Application;
-using Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +27,13 @@ builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
 builder.Services.AddScoped<IProdutoPedidoService, ProdutoPedidoService>();
+
+//todo Configuraçao para evitar o erro de loop infinito na serializaçao do JSON
+builder.Services.AddControllers()
+		.AddJsonOptions(options =>
+		{
+			options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+		});
 
 // Add services to the container.
 
