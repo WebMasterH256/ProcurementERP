@@ -59,4 +59,21 @@ public class PedidoController : ControllerBase
 		await _ps.DeleteAsync(id);
 		return NoContent();
 	}
+
+	public class AtualizarStatusRequest
+	{
+		public StatusPedido NovoStatus { get; set; }
+		public int UsuarioId { get; set; }
+	}
+
+	[Authorize (Roles = "Gerente")]
+	[HttpPatch("{id}/status")]
+	public async Task<IActionResult> AtualizarStatus(int id, [FromBody] AtualizarStatusRequest request)
+	{
+		var pedido = await _ps.GetByIdAsync(id);
+		if (pedido == null) return NotFound();
+
+		await _ps.UpdateStatusAsync(id, request.NovoStatus, request.UsuarioId);
+		return NoContent();
+	}
 }
