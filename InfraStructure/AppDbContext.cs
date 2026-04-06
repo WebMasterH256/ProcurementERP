@@ -5,7 +5,7 @@ namespace InfraStructure;
 
 public class AppDbContext : DbContext
 {
-	// Construtor para injeção de dependência
+		// Construtor para injeção de dependência
 		public AppDbContext
 			(DbContextOptions<AppDbContext> options) : base(options)
 		{
@@ -18,9 +18,10 @@ public class AppDbContext : DbContext
 		public DbSet<Pedido> Pedidos { get; set; }
 		public DbSet<ProdutoPedido> ProdutoPedidos { get; set; }
 		public DbSet<Departamento> Departamentos { get; set; }
+		public DbSet<AuditLog> AuditLogs { get; set; }
 
-		// Método que controla as alterações no SGBD
-		override
+	// Método que controla as alterações no SGBD
+	override
 		protected void
 		OnModelCreating(ModelBuilder modelBuilder)
 		{
