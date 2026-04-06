@@ -12,4 +12,5 @@ public interface IPedidoService
 	Task AddAsync(Pedido pedido);
 	Task UpdateAsync(Pedido pedido);
 	Task DeleteAsync(int id);
+	Task UpdateStatusAsync(int pedidoId, StatusPedido novoStatus, int UsuarioId);
 }

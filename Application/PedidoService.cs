@@ -1,19 +1,19 @@
 ﻿using Application.Interfaces;
 using Domain;
+using InfraStructure;
 using InfraStructure.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application;
 
 public class PedidoService : IPedidoService
 {
 	private readonly IPedidoRepository _repository;
+	private readonly AppDbContext _context;
 
-	public PedidoService(IPedidoRepository repository)
+	public PedidoService(IPedidoRepository repository, AppDbContext context)
 	{
 		_repository = repository;
+		_context = context;
 	}
 
 	public async Task<IEnumerable<Pedido>> GetAllAsync()
@@ -39,6 +39,26 @@ public class PedidoService : IPedidoService
 		var pedido = await _repository.GetByIdAsync(id);
 		if (pedido is null) return;
 		_repository.Delete(pedido);
+		await _repository.SaveChangesAsync();
+	}
+
+	public async Task UpdateStatusAsync(int pedidoId, StatusPedido novoStatus, int usuarioId)
+	{
+		var pedido = await _repository.GetByIdAsync(pedidoId);
+		if (pedido is null) return;
+
+		var audit = new AuditLog
+		{
+			PedidoId = pedidoId,
+			StatusAnterior = pedido.Status.ToString(),
+			StatusNovo = novoStatus.ToString(),
+			UsuarioId = usuarioId,
+			Data = DateTime.UtcNow
+		};
+
+		pedido.Status = novoStatus;
+		_repository.Update(pedido);
+		await _context.AuditLogs.AddAsync(audit);
 		await _repository.SaveChangesAsync();
 	}
 }
