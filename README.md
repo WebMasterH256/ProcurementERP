@@ -42,7 +42,7 @@ ProcurementERP/
 - [x] Services com transações ACID
 - [x] Controllers e endpoints REST
 - [x] Autenticação JWT com RBAC (controle de acesso por cargo)
-- [ ] Trilha de auditoria (audit log)
+- [x] Trilha de auditoria (audit log)
 - [ ] Relatórios com Dapper
 - [ ] Documentação completa
 
@@ -74,7 +74,7 @@ ProcurementERP/
 ├── Domain/                 # Entities and enums
 ├── Infrastructure/         # DbContext, migrations, repositories
 │   └── Configurations/     # EF Core mapping per entity
-└── Application/            # Services and business logic (coming soon)
+└── Application/            # Services and business logic
 ```
 
 ### Roadmap
@@ -85,7 +85,7 @@ ProcurementERP/
 - [x] Repositories (data access layer)
 - [x] Services with ACID transactions
 - [x] Controllers and REST endpoints
-- [ ] JWT authentication with RBAC
-- [ ] Audit logging
+- [x] JWT authentication with RBAC
+- [x] Audit logging
 - [ ] Dapper reporting queries
 - [ ] Full documentation
