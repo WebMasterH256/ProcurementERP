@@ -30,6 +30,7 @@ ProcurementERP/
 ├── Domain/                 # Entidades e enums
 ├── Infrastructure/         # DbContext, migrations, repositórios
 │   └── Configurations/     # Mapeamento EF Core por entidade
+│   └── Reports/            # Consultas Dapper para relatórios
 └── Application/            # Services e regras de negócio
 ```
 
@@ -43,8 +44,8 @@ ProcurementERP/
 - [x] Controllers e endpoints REST
 - [x] Autenticação JWT com RBAC (controle de acesso por cargo)
 - [x] Trilha de auditoria (audit log)
-- [ ] Relatórios com Dapper
-- [ ] Documentação completa
+- [x] Relatórios com Dapper
+- [x] Documentação completa
 
 ---
 
@@ -87,5 +88,5 @@ ProcurementERP/
 - [x] Controllers and REST endpoints
 - [x] JWT authentication with RBAC
 - [x] Audit logging
-- [ ] Dapper reporting queries
-- [ ] Full documentation
+- [x] Dapper reporting queries
+- [x] Full documentation
