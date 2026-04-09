@@ -4,6 +4,7 @@ using Application.Interfaces;
 using InfraStructure;
 using InfraStructure.Repositories;
 using InfraStructure.Repositories.Interfaces;
+using InfraStructure.Reports;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -30,6 +31,9 @@ builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
 builder.Services.AddScoped<IProdutoPedidoService, ProdutoPedidoService>();
+
+//todo Classe utilizada para a camada de relatório, onde ficam as regras de negócio específicas para relatórios
+builder.Services.AddScoped<PedidoReportRepository>();
 
 //todo Configuraçao para evitar o erro de loop infinito na serializaçao do JSON
 builder.Services.AddControllers()
